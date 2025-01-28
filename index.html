@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Popup</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            background-color: #f4f4f9;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        .menu {
+            width: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 10px;
+            background-color: #ffffff;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu button {
+            margin: 5px 0;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 6px;
+            background-color: #841816;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+            width: 100%;
+        }
+
+        .menu button:hover {
+            background-color: #0056b3;
+        }
+
+        .popup {
+            margin-left: 220px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: calc(100% - 240px);
+            text-align: center;
+            overflow-y: auto;
+            max-height: 80vh;
+        }
+
+        .content {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 10px 0;
+        }
+
+        .content p {
+            margin: 10px 0;
+            line-height: 1.5;
+        }
+
+        .sub-menu {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+
+        .sub-menu button {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="menu">
+    <h2>Inteligencia Artificial</h2>
+    <button onclick="showContent(1)">Definición</button>
+    <button onclick="showContent(2)">IA generativa</button>
+    <button onclick="showContent(3)">Modelos de entrenamiento</button>
+    <div id="sub-menu" class="sub-menu hidden">
+        <button onclick="showContent(3.1)">Aprendizaje supervisado</button>
+        <button onclick="showContent(3.2)">Aprendizaje no supervisado</button>
+        <button onclick="showContent(3.3)">Aprendizaje semi-supervisado</button>
+    </div>
+    <button onclick="showContent(4)">Tipos de inteligencia artificial</button>
+    <div id="sub-menu2" class="sub-menu hidden">
+        <button onclick="showContent(4.1)">Aprendizaje automático</button>
+        <button onclick="showContent(4.2)">Aprendizaje profundo</button>
+        <button onclick="showContent(4.3)">Redes neuronales</button>
+        <button onclick="showContent(4.4)">Sistema experto</button>
+    </div>
+</div>
+
+<div class="popup">
+    <div id="content" class="content hidden">
+        <p id="content-text"></p>
+        <img id="content-image" class="hidden" alt="Content Image">
+    </div>
+</div>
+
+<script>
+    function showContent(option) {
+        const contentDiv = document.getElementById('content');
+        const contentText = document.getElementById('content-text');
+        const contentImage = document.getElementById('content-image');
+        const subMenu = document.getElementById('sub-menu');
+        const subMenu2 = document.getElementById('sub-menu2');
+
+        const data = {
+            1: {
+                text: "<strong>Definición:</strong><br><br>La Inteligencia Artificial (IA) es una rama de la informática que se enfoca en el desarrollo de sistemas y algoritmos capaces de realizar tareas que, tradicionalmente, requieren inteligencia humana. Estas tareas incluyen el razonamiento, el aprendizaje, la toma de decisiones, la resolución de problemas, la percepción y el procesamiento del lenguaje natural.",
+                image: "https://mediatek-marketing.transforms.svdcdn.com/production/posts/MediaTek-IA-2023.jpg?w=2048&h=1075&q=80&auto=format&fit=crop&dm=1688130337&s=3b56535c28f441a34db9455d64444cb7"
+            },
+            2: {
+                text: "<strong>IA generativa:</strong> <br><br>Es un tipo de IA que genera contenido nuevo, como texto, imágenes u otros medios. Aprenderá cómo se puede utilizar genAI para ayudar a las personas a realizar una variedad de tareas. Gemini y ChatGPT son ejemplos de herramientas genAI que se utilizan con indicaciones conversacionales.",
+                image: "https://mediatek-marketing.transforms.svdcdn.com/production/posts/MediaTek-IA-2023.jpg?w=2048&h=1075&q=80&auto=format&fit=crop&dm=1688130337&s=3b56535c28f441a34db9455d64444cb7"
+            },
+            3: {
+                text: "<strong>Modelos:</strong> <br><br>1. El <i>aprendizaje supervisado</i> es un modelo de aprendizaje automático que asigna una entrada específica a un resultado mediante datos de entrenamiento etiquetados. <br><br> 2. El <i>aprendizaje no supervisado</i> es un modelo de aprendizaje automático que aprende patrones en función de datos no etiquetados.",
+                image: "https://mediatek-marketing.transforms.svdcdn.com/production/posts/MediaTek-IA-2023.jpg?w=2048&h=1075&q=80&auto=format&fit=crop&dm=1688130337&s=3b56535c28f441a34db9455d64444cb7"
+            },
+            3.1: {
+                text: "<strong>Aprendizaje automático:</strong><br><br>El <i>aprendizaje automático</i>, o machine learning, se basa en la capacidad que un software o dispositivo tiene de aprender por su cuenta. El aprendizaje automático sigue tres pasos fundamentales: aprendizaje, entrenamiento y resultados. Puede estar supervisado por una persona o de manera autónoma gracias a la propia IA.",
+                image: "https://mediatek-marketing.transforms.svdcdn.com/production/posts/MediaTek-IA-2023.jpg?w=2048&h=1075&q=80&auto=format&fit=crop&dm=1688130337&s=3b56535c28f441a34db9455d64444cb7"
+            },
+            3.2: {
+                text: "<strong>Aprendizaje profundo:</strong><br><br>El <i>aprendizaje profundo</i>, o deep learning, es un tipo de aprendizaje que va más allá del automático, ya que engloba y procesa más datos e información al mismo tiempo. Utiliza otro de los tipos de inteligencia artificial para desenvolverse entre un mayor volumen de información, las redes neuronales, son una rama de la IA que imita la estructura y el funcionamiento del cerebro humano.",
+                image: "https://mediatek-marketing.transforms.svdcdn.com/production/posts/MediaTek-IA-2023.jpg?w=2048&h=1075&q=80&auto=format&fit=crop&dm=1688130337&s=3b56535c28f441a34db9455d64444cb7"
+            },
+            3.3: {
+                text: "<strong>Redes neuronales:</strong><br><br>Las <i>redes neuronales</i>, como su propio nombre indica, son un tipo de IA que intenta imitar el comportamiento de las neuronas. A partir de una red de neuronas artificiales, se crea un sistema por el que reciben y procesan datos tal y como lo hace el procesamiento neuronal biológico. Las Redes Neuronales Artificiales (RNA) están formadas por millones de neuronas de este tipo que trabajan de manera coordinada y con la capacidad de operar con acciones de aprendizaje.",
+                image: "https://mediatek-marketing.transforms.svdcdn.com/production/posts/MediaTek-IA-2023.jpg?w=2048&h=1075&q=80&auto=format&fit=crop&dm=1688130337&s=3b56535c28f441a34db9455d64444cb7"
+            },
+            4: {
+                text: "<strong>Tipos:</strong> <br><br>Actualmente, los tipos de inteligencia artificial se suelen aglutinar en 4 categorías. <br>Aprendizaje automático<br>Aprendizaje profundo<br>Redes neuronales<br>Sistema experto<br>",
+                image: "https://mediatek-marketing.transforms.svdcdn.com/production/posts/MediaTek-IA-2023.jpg?w=2048&h=1075&q=80&auto=format&fit=crop&dm=1688130337&s=3b56535c28f441a34db9455d64444cb7"
+            },
+            4.1: {
+                text: "<strong>Aprendizaje automático:</strong><br><br>El <i>aprendizaje automático</i>, o machine learning, se basa en la capacidad que un software o dispositivo tiene de aprender por su cuenta. El aprendizaje automático sigue tres pasos fundamentales: aprendizaje, entrenamiento y resultados. Puede estar supervisado por una persona o de manera autónoma gracias a la propia IA.",
+                image: "https://mediatek-marketing.transforms.svdcdn.com/production/posts/MediaTek-IA-2023.jpg?w=2048&h=1075&q=80&auto=format&fit=crop&dm=1688130337&s=3b56535c28f441a34db9455d64444cb7"
+            },
+            4.2: {
+                text: "<strong>Aprendizaje profundo:</strong><br><br>El <i>aprendizaje profundo</i>, o deep learning, es un tipo de aprendizaje que va más allá del automático, ya que engloba y procesa más datos e información al mismo tiempo. Utiliza otro de los tipos de inteligencia artificial para desenvolverse entre un mayor volumen de información, las redes neuronales, son una rama de la IA que imita la estructura y el funcionamiento del cerebro humano.",
+                image: "https://mediatek-marketing.transforms.svdcdn.com/production/posts/MediaTek-IA-2023.jpg?w=2048&h=1075&q=80&auto=format&fit=crop&dm=1688130337&s=3b56535c28f441a34db9455d64444cb7"
+            },
+            4.3: {
+                text: "<strong>Redes neuronales:</strong><br><br>Las <i>redes neuronales</i>, como su propio nombre indica, son un tipo de IA que intenta imitar el comportamiento de las neuronas. A partir de una red de neuronas artificiales, se crea un sistema por el que reciben y procesan datos tal y como lo hace el procesamiento neuronal biológico. Las Redes Neuronales Artificiales (RNA) están formadas por millones de neuronas de este tipo que trabajan de manera coordinada y con la capacidad de operar con acciones de aprendizaje.",
+                image: "https://mediatek-marketing.transforms.svdcdn.com/production/posts/MediaTek-IA-2023.jpg?w=2048&h=1075&q=80&auto=format&fit=crop&dm=1688130337&s=3b56535c28f441a34db9455d64444cb7"
+            },
+            4.4: {
+                text: "<strong>sistemas expertos:</strong><br><br>Los <i>sistemas expertos</i> son programas informáticos que emulan el razonamiento humano en áreas específicas. Estos sistemas están diseñados para imitar el conocimiento, la lógica racional y el juicio de un experto humano en un campo determinado. Con ello, es capaz de tomar decisiones informadas y proporcionar soluciones precisas y adecuadas en situaciones que pueden llegar a ser complejas.",
+                image: "https://mediatek-marketing.transforms.svdcdn.com/production/posts/MediaTek-IA-2023.jpg?w=2048&h=1075&q=80&auto=format&fit=crop&dm=1688130337&s=3b56535c28f441a34db9455d64444cb7"
+            }
+        };
+
+        const selectedData = data[option] || { text: "", image: "" };
+
+        contentText.innerHTML = selectedData.text;
+        if (selectedData.image) {
+            contentImage.src = selectedData.image;
+            contentImage.classList.remove('hidden');
+        } else {
+            contentImage.classList.add('hidden');
+        }
+        contentDiv.classList.remove('hidden');
+
+        // Mostrar sub-menu solo cuando se hace clic en el primer botón
+        if (option === 3) {
+            subMenu.classList.remove('hidden');
+            subMenu2.classList.add('hidden');
+        } else {
+            //subMenu.classList.add('hidden');
+        }
+        if (option === 4) {
+            subMenu.classList.add('hidden');
+            subMenu2.classList.remove('hidden');
+        } else {
+            //subMenu2.classList.add('hidden');
+        }
+    }
+</script>
+
+</body>
+</html>
